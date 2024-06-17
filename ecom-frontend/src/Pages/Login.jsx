@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
 import profileImg from "../assest/profile-logo.png";
+import { toast } from "react-toastify";
+import SummaryApi from "../common";
 // import { CgProfile } from "react-icons/cg";
 
 const Login = () => {
@@ -12,6 +14,8 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -24,11 +28,30 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const dataResponse = await fetch(SummaryApi.signIn.url, {
+      method: SummaryApi.signIn.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const dataApi = await dataResponse.json();
+
+    if (dataApi.success) {
+      toast.success(dataApi.message);
+      navigate("/");
+    }
+
+    if (dataApi.error) {
+      toast.error(dataApi.message);
+    }
   };
 
-  console.log("data login", data);
+  // console.log("data login", data);
 
   return (
     <section id="login">

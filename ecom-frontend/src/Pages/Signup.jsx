@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
 import profileImg from "../assest/profile-logo.png";
 import ImageToBase64 from "../helpers/ImageToBase64.js";
+import SummaryApi from "../common/index.js";
+import { toast } from "react-toastify";
 // import { CgProfile } from "react-icons/cg";
 
 const Signup = () => {
@@ -17,6 +19,8 @@ const Signup = () => {
     confirmPassword: "",
   });
 
+  const navigate = useNavigate();
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
 
@@ -28,8 +32,31 @@ const Signup = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (data.password === data.confirmPassword) {
+      const dataResponse = await fetch(SummaryApi.signUP.url, {
+        method: SummaryApi.signUP.method,
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const dataApi = await dataResponse.json();
+
+      if (dataApi.success) {
+        toast.success(dataApi.message);
+        navigate("/login");
+      }
+
+      if (dataApi.error) {
+        toast.error(dataApi.message);
+      }
+    } else {
+      toast.error("password and confirm password are not matching");
+    }
   };
 
   // console.log("data login", data);

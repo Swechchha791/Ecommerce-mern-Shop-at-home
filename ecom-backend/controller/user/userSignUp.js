@@ -1,4 +1,4 @@
-const userModel = require("../models/userModel");
+const userModel = require("../../models/userModel");
 const bcrypt = require("bcryptjs");
 
 async function userSignUpController(req, res) {
@@ -10,7 +10,7 @@ async function userSignUpController(req, res) {
     // console.log("user",user)
 
     if (user) {
-      throw new Error("User already exits.");
+      throw new Error("User Already exits.");
     }
 
     if (!name) {
@@ -27,7 +27,7 @@ async function userSignUpController(req, res) {
     const hashPassword = await bcrypt.hashSync(password, salt);
 
     if (!hashPassword) {
-      throw new Error("Something is wrong");
+      throw new Error("Something went wrong");
     }
 
     const payload = {

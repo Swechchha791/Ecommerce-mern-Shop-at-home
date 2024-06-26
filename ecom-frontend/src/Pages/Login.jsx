@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
 import profileImg from "../assest/profile-logo.png";
 import { toast } from "react-toastify";
 import SummaryApi from "../common";
+import Context from "../context";
 // import { CgProfile } from "react-icons/cg";
 
 const Login = () => {
@@ -16,6 +17,9 @@ const Login = () => {
   });
 
   const navigate = useNavigate();
+
+  const { fetchUserDetails } = useContext(Context);
+  // console.log("generalContext", fetchUserDetails);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -44,6 +48,7 @@ const Login = () => {
     if (dataApi.success) {
       toast.success(dataApi.message);
       navigate("/");
+      fetchUserDetails(); // fetch the user details
     }
 
     if (dataApi.error) {

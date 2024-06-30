@@ -6,6 +6,7 @@ const addToCart = async (e, id) => {
   e?.stopPropagation();
   e?.preventDefault();
 
+  // Function to fetch the product Details
   const response = await fetch(SummaryApi.addToCartProduct.url, {
     method: SummaryApi.addToCartProduct.method,
     credentials: "include",

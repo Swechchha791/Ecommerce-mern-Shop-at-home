@@ -33,6 +33,7 @@ const ProductDetails = () => {
 
   const navigate = useNavigate();
 
+  // Function to fetch product details from the API
   const fetchProductDetails = async () => {
     setLoading(true);
     const response = await fetch(SummaryApi.productDetails.url, {
@@ -57,36 +58,42 @@ const ProductDetails = () => {
     fetchProductDetails();
   }, [params]);
 
+  // Function to handle mouse enter event on product image thumbnail
   const handleMouseEnterProduct = (imageURL) => {
     setActiveImage(imageURL);
   };
 
+  // Function to handle product image zoom on hover (optimized with useCallback)
   const handleZoomImage = useCallback(
     (e) => {
       setZoomImage(true);
       const { left, top, width, height } = e.target.getBoundingClientRect();
-      console.log("coordinate", left, top, width, height);
 
-      const x = (e.clientX - left) / width;
-      const y = (e.clientY - top) / height;
+      // console.log("coordinate", left, top, width, height);
+
+      const x = (e.clientX - left) / width; // Calculate relative X coordinate of cursor on image
+      const y = (e.clientY - top) / height; // Calculate relative Y coordinate of cursor on image
 
       setZoomImageCoordinate({
         x,
         y,
-      });
+      }); // Update zoom image coordinates based on cursor position
     },
     [zoomImageCoordinate]
   );
 
+  // Function to handle leaving the zoomed image area
   const handleLeaveImageZoom = () => {
     setZoomImage(false);
   };
 
+  // Function to handle adding product to cart
   const handleAddToCart = async (e, id) => {
     await addToCart(e, id);
     fetchUserAddToCart();
   };
 
+  // Function to handle buying the product (potentially adding to cart and navigating to cart page)
   const handleBuyProduct = async (e, id) => {
     await addToCart(e, id);
     fetchUserAddToCart();
@@ -96,7 +103,7 @@ const ProductDetails = () => {
   return (
     <div className="container mx-auto p-4 mt-10 ">
       <div className="min-h-[200px] flex flex-col lg:flex-row gap-4">
-        {/***product Image */}
+        {/* product Image */}
         <div className="h-96 flex flex-col lg:flex-row-reverse gap-4 items-center justify-center">
           <div className="h-[300px] w-[300px] lg:h-96 lg:w-96 bg-indigo-200 relative p-2">
             <img
@@ -106,7 +113,7 @@ const ProductDetails = () => {
               onMouseLeave={handleLeaveImageZoom}
             />
 
-            {/**product zoom */}
+            {/* product zoom */}
             {zoomImage && (
               <div className="hidden lg:block absolute min-w-[500px] overflow-hidden min-h-[400px] bg-indigo-200 p-1 -right-[510px] top-0">
                 <div

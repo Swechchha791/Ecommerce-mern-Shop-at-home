@@ -160,7 +160,7 @@ const Cart = () => {
                       <p className="text-indigo-600 font-medium text-lg">
                         {displayINRCurrency(product?.productId?.sellingPrice)}
                       </p>
-                      <p className="text-indigo-600 font-semibold text-lg">
+                      <p className="text-green-600 font-semibold text-lg">
                         {displayINRCurrency(
                           product?.productId?.sellingPrice * product?.quantity
                         )}
@@ -188,7 +188,7 @@ const Cart = () => {
                       </button>
                       {/* Delete product */}
                       <div
-                        className="absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer mx-4 text-xl"
+                        className="absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer mx-4 text-xl transition-all"
                         onClick={(e) => {
                           e.preventDefault();
                           deleteCartProduct(product?._id);
@@ -204,22 +204,22 @@ const Cart = () => {
 
         {/***summary  */}
         <div className="mt-5 lg:mt-0 w-full max-w-sm mx-auto">
+          <h2 className="text-white bg-indigo-600 px-4 py-1">Summary</h2>
           {loading ? (
             <div className="h-36 bg-indigo-200 border border-indigo-300 animate-pulse"></div>
           ) : (
-            <div className="h-36 bg-white font-medium shadow-xl rounded-md">
-              <h2 className="text-white bg-indigo-600 px-4 py-1">Summary</h2>
-              <div className="flex items-center justify-between px-4 gap-2 text-lg text-indigo-600">
+            <div className="h-36 bg-white font-medium shadow-xl rounded-md p-2 ">
+              <div className="flex items-center justify-between px-4 py-1 gap-2 text-lg text-indigo-600">
                 <p>Quantity</p>
                 <p>{totalQty}</p>
               </div>
-
-              <div className="flex items-center justify-between px-4 gap-2 text-lg text-indigo-600">
+              <hr />
+              <div className="flex items-center justify-between px-4 py-1 gap-2 text-lg text-indigo-600">
                 <p>Total Price</p>
                 <p>{displayINRCurrency(totalPrice)}</p>
               </div>
 
-              <button className="bg-indigo-600 py-1 text-white w-full text-center mt-4 rounded-xl hover:bg-indigo-700">
+              <button className="bg-indigo-500 py-1 text-white w-full text-center mt-4 rounded-xl hover:bg-indigo-700">
                 Payment
               </button>
             </div>

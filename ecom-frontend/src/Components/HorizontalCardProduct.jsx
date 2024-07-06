@@ -63,7 +63,7 @@ const HorizontalCardProduct = ({ category, heading }) => {
         </button>
 
         {loading
-          ? loadingList.map((product, index) => {
+          ? loadingList?.map((product, index) => {
               return (
                 <div
                   className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex"
@@ -82,7 +82,7 @@ const HorizontalCardProduct = ({ category, heading }) => {
                 </div>
               );
             })
-          : data.map((product, index) => {
+          : data?.map((product, index) => {
               return (
                 <Link
                   to={"product/" + product?._id}

@@ -6,16 +6,18 @@ const CategoryList = () => {
   const [categoryProduct, setCategoryProduct] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const categoryLoading = new Array(13).fill(null);
+  const categoryLoading = new Array(13).fill(null); // Array to create loading placeholders
 
+  // Function to fetch category products from API
   const fetchCategoryProduct = async () => {
     setLoading(true);
     const response = await fetch(SummaryApi.categoryProduct.url);
     const dataResponse = await response.json();
     setLoading(false);
-    setCategoryProduct(dataResponse.data);
+    setCategoryProduct(dataResponse.data); // Update category products state
   };
 
+  // useEffect to fetch category products on component mount
   useEffect(() => {
     fetchCategoryProduct();
   }, []);
@@ -32,10 +34,13 @@ const CategoryList = () => {
                 ></div>
               );
             })
-          : categoryProduct.map((product, index) => {
+          : categoryProduct.map((product) => {
               return (
                 <Link
-                  to={"/product-category?category=" + product?.category}
+                  to={`/product-category/${encodeURIComponent(
+                    product?.category
+                  )}`} // Updated to use dynamic segment
+                  // to={"/product-category?category=" + product?.category}
                   className="cursor-pointer"
                   key={product?.category}
                 >

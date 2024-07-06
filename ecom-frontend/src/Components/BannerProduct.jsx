@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import image1 from "../assest/banner/img1.webp";
-import image2 from "../assest/banner/img2.webp";
-import image3 from "../assest/banner/img3.jpg";
-import image4 from "../assest/banner/img4.jpg";
-import image5 from "../assest/banner/img5.webp";
+import image1 from "../assest/banner/large_screen-img1.jpg";
+import image2 from "../assest/banner/large-screen-img2.jpg";
+import image3 from "../assest/banner/img2.webp";
+import image4 from "../assest/banner/img3.jpg";
+import image5 from "../assest/banner/large-screen-img3.jpg";
 
-import image1Mobile from "../assest/banner/img1_mobile.jpg";
-import image2Mobile from "../assest/banner/img2_mobile.webp";
-import image3Mobile from "../assest/banner/img3_mobile.jpg";
-import image4Mobile from "../assest/banner/img4_mobile.jpg";
-import image5Mobile from "../assest/banner/img5_mobile.png";
+import image1Mobile from "../assest/banner/Mobile-img1.jpg";
+import image2Mobile from "../assest/banner/mobile-img2.jpg";
+import image3Mobile from "../assest/banner/mobile-img3.jpg";
+import image4Mobile from "../assest/banner/img3_mobile.jpg";
+import image5Mobile from "../assest/banner/img2_mobile.jpg";
+import image6Mobile from "../assest/banner/img5_mobile.png";
 
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
@@ -25,6 +26,7 @@ const BannerProduct = () => {
     image3Mobile,
     image4Mobile,
     image5Mobile,
+    image6Mobile,
   ];
 
   const nextImage = () => {
@@ -54,7 +56,8 @@ const BannerProduct = () => {
   return (
     <div className="container mx-auto px-4 rounded-md my-4">
       <div className="h-56 md:h-72 w-full bg-indigo-200 relative">
-        <div className="absolute z-10 h-full w-full md:flex items-center hidden ">
+        {/* Banner slider Arrows */}
+        <div className="absolute z-10 h-full w-full flex items-center">
           <div className=" flex justify-between w-full text-2xl">
             <button
               onClick={preveImage}

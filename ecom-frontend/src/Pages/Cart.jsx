@@ -141,9 +141,9 @@ const Cart = () => {
                 <Link
                   to={"/product/" + product?.productId?._id}
                   key={index + "Add To Cart Loading"}
-                  className="w-full shadow-lg bg-white h-32 my-2 border border-indigo-300 rounded grid grid-cols-[128px,1fr]"
+                  className="w-full shadow-lg bg-white h-32 my-2 border border-indigo-300 rounded grid grid-cols-[128px,1fr] font-medium"
                 >
-                  <div className="w-32 h-32 bg-indigo-200">
+                  <div className="w-32 h-32 bg-indigo-200 ">
                     <img
                       src={product?.productId?.productImage[0]}
                       className="w-full h-full object-scale-down mix-blend-multiply"
@@ -157,7 +157,7 @@ const Cart = () => {
                       {product?.productId?.category}
                     </p>
                     <div className="flex items-center justify-between">
-                      <p className="text-indigo-600 font-medium text-lg">
+                      <p className="text-indigo-600 text-lg">
                         {displayINRCurrency(product?.productId?.sellingPrice)}
                       </p>
                       <p className="text-green-600 font-semibold text-lg">

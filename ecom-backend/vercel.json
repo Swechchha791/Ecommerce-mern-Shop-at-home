@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "backend",
+    "name": "ecom-backend",
     "builds": [
       {
         "src": "api/**/*.js",

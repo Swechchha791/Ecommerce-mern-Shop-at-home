@@ -116,6 +116,14 @@ const Header = () => {
                     User Profile
                   </Link> */}
 
+                  <Link
+                    to={"/order"}
+                    className="whitespace-nowrap block hover:bg-indigo-100 px-2 py-0.5"
+                    onClick={() => setMenuDisplay(false)}
+                  >
+                    Your Orders
+                  </Link>
+
                   {user?.role === ROLE.ADMIN && (
                     <Link
                       to={"/admin-panel/all-products"}

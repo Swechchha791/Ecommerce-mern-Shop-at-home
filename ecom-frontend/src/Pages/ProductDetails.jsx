@@ -133,7 +133,7 @@ const ProductDetails = () => {
           <div className="h-full">
             {loading ? (
               <div className="flex gap-2 lg:flex-col overflow-auto scrollbar-none h-full sm:h-40">
-                {productImageListLoading.map((el, index) => {
+                {productImageListLoading?.map((el, index) => {
                   return (
                     <div
                       className="h-20 w-20 bg-indigo-200 rounded animate-pulse"
@@ -208,10 +208,10 @@ const ProductDetails = () => {
 
             <div className="flex items-center gap-2 text-2xl lg:text-3xl font-medium my-1">
               <p className="text-indigod-600">
-                {displayINRCurrency(data.sellingPrice)}
+                {displayINRCurrency(data?.sellingPrice)}
               </p>
               <p className="text-slate-400 line-through">
-                {displayINRCurrency(data.price)}
+                {displayINRCurrency(data?.price)}
               </p>
             </div>
 
@@ -238,7 +238,7 @@ const ProductDetails = () => {
         )}
       </div>
 
-      {data.category && (
+      {data?.category && (
         <CategoryWiseProductDisplay
           category={data?.category}
           heading={"Recommended Product"}

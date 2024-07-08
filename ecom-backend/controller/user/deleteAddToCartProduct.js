@@ -7,6 +7,7 @@ const deleteAddToCartProduct = async (req, res) => {
 
     const deleteProduct = await addToCartModel.deleteOne({
       _id: addToCartProductId,
+      userId: currentUserId,
     });
 
     res.json({

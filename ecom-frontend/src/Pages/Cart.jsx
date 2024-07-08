@@ -5,6 +5,7 @@ import Context from "../context";
 import displayINRCurrency from "../helpers/DisplayCurrency";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
 
 const Cart = () => {
   const [data, setData] = useState([]); // State to hold cart data
@@ -119,6 +120,30 @@ const Cart = () => {
     0
   );
 
+  const handlePayment = async () => {
+    // recreating the `Stripe` object on every render.
+    const stripePromise = await loadStripe(
+      process.env.REACT_APP_STRIPE_PUBLISH_KEY
+    );
+    const response = await fetch(SummaryApi.payment.url, {
+      method: SummaryApi.payment.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        cartItems: data,
+      }),
+    });
+
+    const responseData = await response.json();
+
+    if (responseData?.id) {
+      stripePromise.redirectToCheckout({ sessionId: responseData?.id });
+    }
+    // console.log("responseData", responseData);
+  };
+
   return (
     <div className="container mx-auto lg:px-8">
       <div className="text-center text-lg my-3">
@@ -203,28 +228,34 @@ const Cart = () => {
         </div>
 
         {/***summary  */}
-        <div className="mt-5 lg:mt-0 w-full max-w-sm mx-auto">
-          <h2 className="text-white bg-indigo-600 px-4 py-1">Summary</h2>
-          {loading ? (
-            <div className="h-36 bg-indigo-200 border border-indigo-300 animate-pulse"></div>
-          ) : (
-            <div className="h-36 bg-white font-medium shadow-xl rounded-md p-2 ">
-              <div className="flex items-center justify-between px-4 py-1 gap-2 text-lg text-indigo-600">
-                <p>Quantity</p>
-                <p>{totalQty}</p>
-              </div>
-              <hr />
-              <div className="flex items-center justify-between px-4 py-1 gap-2 text-lg text-indigo-600">
-                <p>Total Price</p>
-                <p>{displayINRCurrency(totalPrice)}</p>
-              </div>
 
-              <button className="bg-indigo-500 py-1 text-white w-full text-center mt-4 rounded-xl hover:bg-indigo-700">
-                Payment
-              </button>
-            </div>
-          )}
-        </div>
+        {data[0] && (
+          <div className="mt-5 lg:mt-0 w-full max-w-sm mx-auto">
+            <h2 className="text-white bg-indigo-600 px-4 py-1">Summary</h2>
+            {loading ? (
+              <div className="h-36 bg-indigo-200 border border-indigo-300 animate-pulse"></div>
+            ) : (
+              <div className="h-36 bg-white font-medium shadow-xl rounded-md p-2 ">
+                <div className="flex items-center justify-between px-4 py-1 gap-2 text-lg text-indigo-600">
+                  <p>Quantity</p>
+                  <p>{totalQty}</p>
+                </div>
+                <hr />
+                <div className="flex items-center justify-between px-4 py-1 gap-2 text-lg text-indigo-600">
+                  <p>Total Price</p>
+                  <p>{displayINRCurrency(totalPrice)}</p>
+                </div>
+
+                <button
+                  className="bg-indigo-500 py-1 text-white w-full text-center mt-4 rounded-xl hover:bg-indigo-700"
+                  onClick={handlePayment}
+                >
+                  Payment
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

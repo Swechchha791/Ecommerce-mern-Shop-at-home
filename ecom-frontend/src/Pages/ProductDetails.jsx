@@ -196,7 +196,7 @@ const ProductDetails = () => {
             <h2 className="text-2xl lg:text-2xl font-medium">
               {data?.productName}
             </h2>
-            <p className="capitalize text-indigo-400">{data?.category}</p>
+            <p className="capitalize text-indigo-500">{data?.category}</p>
 
             <div className="text-indigo-600 flex items-center gap-1">
               <FaStar />

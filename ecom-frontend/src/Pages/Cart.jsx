@@ -148,7 +148,9 @@ const Cart = () => {
     <div className="container mx-auto lg:px-8">
       <div className="text-center text-lg my-3">
         {data.length === 0 && !loading && (
-          <p className="bg-white py-5">No Data</p>
+          <p className="bg-green-100 py-10 font-medium">
+            No Items added to the cart
+          </p>
         )}
       </div>
 
@@ -178,7 +180,7 @@ const Cart = () => {
                     <h2 className="text-md lg:text-lg text-ellipsis line-clamp-1">
                       {product?.productId?.productName}
                     </h2>
-                    <p className="capitalize text-indigo-500">
+                    <p className="capitalize text-indigo-500 font-medium">
                       {product?.productId?.category}
                     </p>
                     <div className="flex items-center justify-between">
@@ -247,7 +249,7 @@ const Cart = () => {
                 </div>
 
                 <button
-                  className="bg-indigo-500 py-1 text-white w-full text-center mt-4 rounded-xl hover:bg-indigo-700"
+                  className="bg-indigo-600 py-1 text-white w-full text-center mt-4 rounded-xl hover:bg-indigo-700"
                   onClick={handlePayment}
                 >
                   Payment

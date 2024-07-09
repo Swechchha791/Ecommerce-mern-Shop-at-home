@@ -121,7 +121,7 @@ const Cart = () => {
   );
 
   const handlePayment = async () => {
-    // recreating the `Stripe` object on every render.
+    // recreating the Stripe object on every render.
     const stripePromise = await loadStripe(
       process.env.REACT_APP_STRIPE_PUBLISH_KEY
     );

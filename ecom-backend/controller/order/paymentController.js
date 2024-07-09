@@ -5,7 +5,7 @@ const paymentController = async (req, res) => {
   try {
     const { cartItems } = req.body;
 
-    console.log("cartItems", cartItems);
+    // console.log("cartItems", cartItems);
 
     const user = await userModel.findOne({ _id: req.userId });
 

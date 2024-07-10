@@ -1,3 +1,4 @@
+// Added hosted backend URL
 const backendDomin = process.env.REACT_APP_BACKEND_URL;
 
 const SummaryApi = {

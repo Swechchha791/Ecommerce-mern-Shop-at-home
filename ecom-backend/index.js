@@ -6,13 +6,16 @@ const connectDB = require("./config/db");
 const router = require("./routes/index");
 const bodyParser = require("body-parser");
 
+const corsConfig = {
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+};
+
 const app = express();
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-  })
-);
+app.use(cors(corsConfig));
+
+app.options("", cors(corsConfig));
 
 // Increase the payload size limit
 app.use(bodyParser.json({ limit: "50mb" }));

@@ -111,6 +111,7 @@ const ProductDetails = () => {
               className="h-full w-full object-scale-down mix-blend-multiply"
               onMouseMove={handleZoomImage}
               onMouseLeave={handleLeaveImageZoom}
+              alt="Zoom-img"
             />
 
             {/* product zoom */}

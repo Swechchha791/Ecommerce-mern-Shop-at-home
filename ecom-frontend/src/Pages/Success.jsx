@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Success = () => {
   return (
     <div className="bg-indigo-200 w-full max-w-md mx-auto flex justify-center items-center flex-col p-4 mt-20 rounded">
-      <img src={SUCCESSIMAGE} width={160} height={160} />
+      <img src={SUCCESSIMAGE} width={160} height={160} alt="Success" />
       <p className="text-green-600 font-bold text-xl">
         Payment Done Successfully
       </p>

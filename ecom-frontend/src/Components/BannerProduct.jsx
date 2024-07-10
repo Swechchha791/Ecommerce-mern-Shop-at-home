@@ -54,7 +54,7 @@ const BannerProduct = () => {
   }, [currentImage]);
 
   return (
-    <div className="container mx-auto px-4 rounded-md my-4">
+    <div className="container mx-auto px-4 rounded-md my-6">
       <div className="h-56 md:h-72 w-full bg-indigo-200 relative">
         {/* Banner slider Arrows */}
         <div className="absolute z-10 h-full w-full flex items-center">

@@ -33,7 +33,10 @@ const AllOrder = () => {
       <div className="p-4 w-full">
         {data.map((item, index) => {
           return (
-            <div key={item.userId + index}>
+            <div
+              key={item.userId + index}
+              className="m-4 bg-white rounded shadow-lg p-6"
+            >
               <p className="font-medium text-lg">
                 {moment(item.createdAt).format("LL")}
               </p>
@@ -44,11 +47,11 @@ const AllOrder = () => {
                       return (
                         <div
                           key={product.productId + index}
-                          className="flex  gap-3 bg-indigo-100"
+                          className="flex gap-3 bg-indigo-100 p-2 overflow-hidden"
                         >
                           <img
                             src={product.image[0]}
-                            className="w-28 h-28 bg-indigo-200 object-scale-down p-2"
+                            className="w-28 h-28 bg-indigo-200 object-scale-down hover:scale-110 transition-all p-2 mix-blend-multiply"
                             alt="product-img"
                           />
                           <div>
@@ -97,7 +100,7 @@ const AllOrder = () => {
                   </div>
                 </div>
 
-                <div className="font-bold ml-auto w-fit lg:text-lg px-4 text-green-600">
+                <div className="font-bold ml-auto w-fit lg:text-lg md:px-20 m-2 text-green-600">
                   Total Amount : {item.totalAmount}
                 </div>
               </div>

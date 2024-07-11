@@ -86,13 +86,13 @@ const HorizontalCardProduct = ({ category, heading }) => {
               return (
                 <Link
                   to={"product/" + product?._id}
-                  className="w-full min-w-[310px] md:min-w-[340px] max-w-[310px] md:max-w-[340px] h-36 bg-white rounded-sm shadow flex"
+                  className="w-full min-w-[310px] md:min-w-[340px] max-w-[310px] md:max-w-[340px] h-36 bg-white rounded-sm shadow-sm flex"
                   key={index}
                 >
                   <div className="bg-indigo-200 h-full p-4 min-w-[120px] md:min-w-[145px]">
                     <img
                       src={product.productImage[0]}
-                      className="object-scale-down h-full hover:scale-110 transition-all"
+                      className="object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply"
                       alt={product?.productName}
                     />
                   </div>

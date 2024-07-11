@@ -181,7 +181,7 @@ const Cart = () => {
                   <div className="w-32 h-32 bg-indigo-200 ">
                     <img
                       src={product?.productId?.productImage[0]}
-                      className="w-full h-full object-scale-down mix-blend-multiply"
+                      className="w-full h-full object-scale-down mix-blend-multiply hover:scale-110 transition-all"
                       alt="product-img"
                     />
                   </div>

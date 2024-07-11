@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const corsConfig = {
   origin: process.env.FRONTEND_URL,
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  // methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
 const app = express();
@@ -26,7 +26,7 @@ app.use(cookieParser());
 
 app.use("/api", router);
 
-const PORT = process.env.PORT || 8080;
+const PORT = 8080 || process.env.PORT;
 connectDB().then(() => {
   console.log("mongodb connected");
   app.listen(PORT, () => {

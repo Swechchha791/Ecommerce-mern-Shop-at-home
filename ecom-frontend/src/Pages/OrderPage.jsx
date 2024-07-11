@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import SummaryApi from "../common";
-import moment from "moment";
-import displayINRCurrency from "../helpers/DisplayCurrency";
 import { Link } from "react-router-dom";
+import moment from "moment";
+import SummaryApi from "../common";
+import displayINRCurrency from "../helpers/DisplayCurrency";
 
 const OrderPage = () => {
   const [data, setData] = useState([]);
@@ -25,14 +25,14 @@ const OrderPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="my-8">
       {data.length === 0 && (
         <p className="mx-auto text-center text-lg font-medium bg-indigo-200 py-8 mt-10">
           No Order available
         </p>
       )}
 
-      <div className="w-full my-10">
+      <div className="w-full">
         {data?.map((item, index) => {
           return (
             <div
@@ -54,7 +54,7 @@ const OrderPage = () => {
                         >
                           <img
                             src={product?.image[0] || ""}
-                            className="w-28 h-28 bg-indigo-200 object-scale-down p-2"
+                            className="w-28 h-28 bg-indigo-200 object-scale-down hover:scale-110 transition-all p-2 mix-blend-multiply"
                             alt={product?.name}
                           />
                           <div>

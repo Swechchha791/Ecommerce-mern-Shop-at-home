@@ -54,7 +54,7 @@ const OrderPage = () => {
                         >
                           <img
                             src={product?.image[0] || ""}
-                            className="w-28 h-28 bg-indigo-200 object-scale-down hover:scale-110 transition-all p-2 mix-blend-multiply"
+                            className="w-28 h-28 bg-indigo-200 object-scale-down p-2 mix-blend-multiply"
                             alt={product?.name}
                           />
                           <div>

@@ -26,9 +26,13 @@ const OrderPage = () => {
 
   return (
     <div>
-      {data.length === 0 && <p>No Order available</p>}
+      {data.length === 0 && (
+        <p className="mx-auto text-center text-lg font-medium bg-indigo-200 py-8 mt-10">
+          No Order available
+        </p>
+      )}
 
-      <div className="w-full my-6">
+      <div className="w-full my-10">
         {data?.map((item, index) => {
           return (
             <div
@@ -39,14 +43,14 @@ const OrderPage = () => {
                 {moment(item.createdAt).format("LL")}
               </p>
               <div className="border rounded">
-                <div className="flex flex-col lg:flex-row justify-between">
+                <div className="flex flex-col lg:flex-row justify-between items-center">
                   <div className="grid gap-1">
                     {item?.productDetails?.map((product, index) => {
                       return (
                         <Link
                           to={"/product/" + product?.productId}
                           key={product?.productId + index}
-                          className="flex gap-3 bg-indigo-100 p-2"
+                          className="flex gap-3 bg-indigo-100 p-2 overflow-hidden"
                         >
                           <img
                             src={product?.image[0] || ""}

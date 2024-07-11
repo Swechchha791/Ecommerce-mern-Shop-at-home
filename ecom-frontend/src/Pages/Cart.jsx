@@ -142,18 +142,12 @@ const Cart = () => {
       // Parse the response from your backend
       const responseData = await response.json();
 
-      // Check if the response contains a session ID
       if (responseData?.id) {
         // Redirect to Stripe's checkout page using the session ID
         await stripePromise.redirectToCheckout({ sessionId: responseData.id });
-      } else {
-        // Handle the case where the session ID is not provided
-        console.error("Payment Error: Missing session ID in response");
-        toast.error("Payment failed. Please try again.");
       }
     } catch (error) {
-      // Handle any errors that occur during the payment process
-      console.error("Payment Error:", error);
+      // console.error("Payment Error:", error);
       toast.error("Payment failed. Please try again.");
     }
   };

@@ -15,7 +15,7 @@ const OrderPage = () => {
     const responseData = await response.json();
 
     setData(responseData.data);
-    console.log("order list", responseData);
+    // console.log("order list", responseData);
   };
 
   useEffect(() => {
@@ -24,7 +24,11 @@ const OrderPage = () => {
 
   return (
     <div>
-      {!data[0] && <p>No Order available</p>}
+      {!data[0] && (
+        <p className="mx-auto text-lg font-medium bg-indigo-200 py-8">
+          No Order available
+        </p>
+      )}
 
       <div className="p-4 w-full">
         {data.map((item, index) => {
@@ -34,13 +38,13 @@ const OrderPage = () => {
                 {moment(item.createdAt).format("LL")}
               </p>
               <div className="border rounded bg-white p-4 shadow-lg">
-                <div className="flex flex-col lg:flex-row justify-between">
+                <div className="flex flex-col lg:flex-row justify-between items-center">
                   <div className="grid gap-1">
                     {item?.productDetails.map((product, index) => {
                       return (
                         <div
                           key={product.productId + index}
-                          className="flex  gap-3 bg-indigo-100 px-2"
+                          className="flex gap-3 bg-indigo-100 py-2 px-4"
                         >
                           <img
                             src={product.image[0]}

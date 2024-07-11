@@ -121,27 +121,41 @@ const Cart = () => {
   );
 
   const handlePayment = async () => {
-    // recreating the Stripe object on every render.
-    const stripePromise = await loadStripe(
-      process.env.REACT_APP_STRIPE_PUBLISH_KEY
-    );
-    const response = await fetch(SummaryApi.payment.url, {
-      method: SummaryApi.payment.method,
-      credentials: "include",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        cartItems: data,
-      }),
-    });
+    try {
+      // Load the Stripe object using the publishable key from environment variables
+      const stripePromise = await loadStripe(
+        process.env.REACT_APP_STRIPE_PUBLISH_KEY
+      );
 
-    const responseData = await response.json();
+      // Make an API call to your backend to initiate the payment
+      const response = await fetch(SummaryApi.payment.url, {
+        method: SummaryApi.payment.method,
+        credentials: "include",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          cartItems: data, // Pass the cart items to your backend
+        }),
+      });
 
-    if (responseData?.id) {
-      stripePromise.redirectToCheckout({ sessionId: responseData?.id });
+      // Parse the response from your backend
+      const responseData = await response.json();
+
+      // Check if the response contains a session ID
+      if (responseData?.id) {
+        // Redirect to Stripe's checkout page using the session ID
+        await stripePromise.redirectToCheckout({ sessionId: responseData.id });
+      } else {
+        // Handle the case where the session ID is not provided
+        console.error("Payment Error: Missing session ID in response");
+        toast.error("Payment failed. Please try again.");
+      }
+    } catch (error) {
+      // Handle any errors that occur during the payment process
+      console.error("Payment Error:", error);
+      toast.error("Payment failed. Please try again.");
     }
-    // console.log("responseData", responseData);
   };
 
   return (
@@ -174,6 +188,7 @@ const Cart = () => {
                     <img
                       src={product?.productId?.productImage[0]}
                       className="w-full h-full object-scale-down mix-blend-multiply"
+                      alt="product-img"
                     />
                   </div>
                   <div className="px-4 py-2 relative">

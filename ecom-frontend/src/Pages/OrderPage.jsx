@@ -35,10 +35,7 @@ const OrderPage = () => {
       <div className="w-full">
         {data?.map((item, index) => {
           return (
-            <div
-              key={item.userId + index}
-              className="m-4 bg-white rounded shadow-lg p-6"
-            >
+            <div key={item.userId + index} className="m-4 p-6">
               <p className="font-medium text-lg py-2">
                 {moment(item.createdAt).format("LL")}
               </p>
@@ -104,7 +101,7 @@ const OrderPage = () => {
                   </div>
                 </div>
 
-                <div className="font-bold ml-auto w-fit lg:text-lg md:px-20 m-2 text-green-600">
+                <div className="font-bold ml-auto w-fit lg:text-lg md:px-20 mx-2 text-green-600">
                   Total Amount: {displayINRCurrency(item.totalAmount)}
                 </div>
               </div>

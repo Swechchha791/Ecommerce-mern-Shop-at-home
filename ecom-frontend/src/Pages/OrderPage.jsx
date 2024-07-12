@@ -35,7 +35,7 @@ const OrderPage = () => {
       <div className="w-full">
         {data?.map((item, index) => {
           return (
-            <div key={item.userId + index} className="m-4 p-6">
+            <div key={item.userId + index} className="m-2 p-2">
               <p className="font-medium text-lg py-2">
                 {moment(item.createdAt).format("LL")}
               </p>

@@ -101,7 +101,7 @@ const OrderPage = () => {
                   </div>
                 </div>
 
-                <div className="font-bold ml-auto w-fit lg:text-lg md:px-20 mx-2 text-green-600">
+                <div className="font-bold ml-auto w-fit lg:text-lg md:px-20 m-2 text-green-600">
                   Total Amount: {displayINRCurrency(item.totalAmount)}
                 </div>
               </div>

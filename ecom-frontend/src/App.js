@@ -66,7 +66,7 @@ function App() {
           theme="colored"
         />
         <Header />
-        <main className="min-h-[calc(100vh-120px)] pt-16">
+        <main className="min-h-[calc(100vh-120px)] pt-16 flex-grow">
           <Outlet />
         </main>
         <Footer />

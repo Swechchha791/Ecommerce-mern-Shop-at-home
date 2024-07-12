@@ -47,7 +47,7 @@ const OrderPage = () => {
                         <Link
                           to={"/product/" + product?.productId}
                           key={product?.productId + index}
-                          className="flex gap-3 bg-indigo-100 p-2 overflow-hidden"
+                          className="flex gap-3 bg-white p-2 overflow-hidden"
                         >
                           <img
                             src={product?.image[0] || ""}
@@ -101,7 +101,7 @@ const OrderPage = () => {
                   </div>
                 </div>
 
-                <div className="font-bold ml-auto w-fit lg:text-lg md:px-20 mx-2 text-green-600">
+                <div className="font-bold ml-auto w-fit lg:text-lg md:px-20 m-2 text-green-600">
                   Total Amount: {displayINRCurrency(item.totalAmount)}
                 </div>
               </div>

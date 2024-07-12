@@ -50,13 +50,13 @@ const HorizontalCardProduct = ({ category, heading }) => {
         ref={scrollElement}
       >
         <button
-          className="bg-white shadow-md rounded-full p-1 absolute left-0 text-lg hidden md:block"
+          className="bg-white shadow-md rounded-full p-1 absolute left-0 text-lg hidden md-block"
           onClick={scrollLeft}
         >
           <FaAngleLeft />
         </button>
         <button
-          className="bg-white shadow-md rounded-full p-1 absolute right-0 text-lg hidden md:block"
+          className="bg-white shadow-md rounded-full p-1 absolute right-0 text-lg hidden md-block"
           onClick={scrollRight}
         >
           <FaAngleRight />
@@ -86,7 +86,7 @@ const HorizontalCardProduct = ({ category, heading }) => {
               return (
                 <Link
                   to={"product/" + product?._id}
-                  className="w-full min-w-[310px] md:min-w-[340px] max-w-[310px] md:max-w-[340px] h-36 bg-white rounded-sm shadow-sm flex"
+                  className="w-full min-w-[310px] md:min-w-[340px] max-w-[310px] md:max-w-[340px] h-36 bg-white rounded-sm shadow-md flex"
                   key={index}
                 >
                   <div className="bg-indigo-200 h-full p-4 min-w-[120px] md:min-w-[145px]">

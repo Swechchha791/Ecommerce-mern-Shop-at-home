@@ -44,7 +44,7 @@ const AllOrder = () => {
                       return (
                         <div
                           key={product.productId + index}
-                          className="flex gap-3 bg-indigo-100 p-2"
+                          className="flex gap-3 bg-white p-2"
                         >
                           <img
                             src={product.image[0]}
@@ -97,7 +97,7 @@ const AllOrder = () => {
                   </div>
                 </div>
 
-                <div className="font-bold ml-auto w-fit lg:text-lg md:px-20 mx-2 text-green-600">
+                <div className="font-bold ml-auto w-fit lg:text-lg md:px-20 m-2 text-green-600">
                   Total Amount : {item.totalAmount}
                 </div>
               </div>

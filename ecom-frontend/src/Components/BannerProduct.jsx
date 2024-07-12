@@ -61,13 +61,13 @@ const BannerProduct = () => {
           <div className=" flex justify-between w-full text-2xl">
             <button
               onClick={preveImage}
-              className="bg-white shadow-md rounded-full p-2"
+              className="bg-white shadow-md rounded-full p-1"
             >
               <FaAngleLeft />
             </button>
             <button
               onClick={nextImage}
-              className="bg-white shadow-md rounded-full p-2"
+              className="bg-white shadow-md rounded-full p-1"
             >
               <FaAngleRight />
             </button>

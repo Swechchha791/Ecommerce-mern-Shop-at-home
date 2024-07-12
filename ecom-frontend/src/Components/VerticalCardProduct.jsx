@@ -53,13 +53,13 @@ const VerticalCardProduct = ({ category, heading }) => {
         ref={scrollElement}
       >
         <button
-          className="bg-white shadow-md rounded-full p-1 absolute left-0 text-lg hidden md:block"
+          className="bg-white shadow-md rounded-full p-1 absolute left-0 text-lg hidden md-block"
           onClick={scrollLeft}
         >
           <FaAngleLeft />
         </button>
         <button
-          className="bg-white shadow-md rounded-full p-1 absolute right-0 text-lg hidden md:block"
+          className="bg-white shadow-md rounded-full p-1 absolute right-0 text-lg hidden md-block"
           onClick={scrollRight}
         >
           <FaAngleRight />
@@ -91,7 +91,7 @@ const VerticalCardProduct = ({ category, heading }) => {
               return (
                 <Link
                   to={"product/" + product?._id}
-                  className="w-full min-w-[280px]  md:min-w-[320px] max-w-[280px] md:max-w-[320px]  bg-white rounded-sm shadow "
+                  className="w-full min-w-[280px]  md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-sm shadow-md"
                   key={index}
                 >
                   <div className="bg-indigo-200 h-48 p-4 min-w-[280px] md:min-w-[145px] flex justify-center items-center">
